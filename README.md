@@ -1,6 +1,7 @@
 # The Hero and the Monsters
 My first, big 'hobby' project: a python-pygame, isometric view fighting game.  
-It's already working, but it's not finished yet - scores, level logic and more still have to be added.
+It's already working, but it's not finished yet - scores, level logic and more still have to be added.  
+
 <br>
 ## FIGHT THE ORCS IF YOU DARE!
 Just download this repository (with Python working) and run "start.py".  
