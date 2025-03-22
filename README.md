@@ -12,8 +12,7 @@ Just download this repository (with Python working) and run "start.py".
 ## FIGHTING INSTRUCTIONS  
 
   
-### Fight with the Mouse and the keys 'W', 'A', 'S' & 'D' by
-### clicking on the enemy while holding the keys:
+### Fight with the Mouse and the keys 'W', 'A', 'S' & 'D' by clicking on the enemy while holding the keys:
 'W': UP  
 'A': LEFT  
 'S': STABBING  
