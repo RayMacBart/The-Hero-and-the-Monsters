@@ -1,0 +1,3 @@
+Kampf-Probleme:
+# Die "zuerst-Attacke" des Hero ist nicht die, die man drückt.
+# Manchmal beginnt Hero mitten im Kampf, Pausen zwischen seinen Schlägen zu machen.

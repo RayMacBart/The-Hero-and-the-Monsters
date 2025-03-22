@@ -1,0 +1,12 @@
+Guter Link bezüglich Texture Painting:
+https://www.youtube.com/watch?v=yVQyTophhac
+
+Schräg
+X: 10.5m
+Y: 10.5m
+Z: 38.8m
+
+Gerade:
+X: 14.85m
+Y: 0m
+Z: 38.8m

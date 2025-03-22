@@ -1,0 +1,98 @@
+import pygame
+from pool import Var
+import basic_types
+import ork
+import random
+
+def set_main_background(BG_name):
+    Var.current_blitmaps.append(basic_types.Basic(BG_name, "", [0,0]))
+    Var.current_blitmaps.append(basic_types.Basic(BG_name, "", [320,0]))
+    Var.current_blitmaps.append(basic_types.Basic(BG_name, "", [0,200]))
+    Var.current_blitmaps.append(basic_types.Basic(BG_name, "", [320,200]))
+    Var.main_background = BG_name
+
+def check_progress():
+    pass
+
+def setup():
+    set_main_background("Fog")
+    msp = [95-320, 119-210]  # map-screen-pos!
+    Var.ref_point[0] = 225; Var.ref_point[1] = 91
+    
+    Var.borders[Var.IDG-1] = basic_types.Border("Wall_edge_UR", "Border", [0-msp[0], 0-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.Border("Wall_OU", "Border", [0-msp[0], 100-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.Border("Wall_OU", "Border", [0-msp[0], 200-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.High_border("Wall_edge_OR", "High_border", [0-msp[0], 300-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.Border("Wall_LR", "Border", [100-msp[0], 0-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.Border("Wall_LR", "Border", [200-msp[0], 0-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.Border("Wall_LR", "Border", [300-msp[0], 0-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.Border("Wall_LR", "Border", [400-msp[0], 0-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.Border("Wall_LR", "Border", [500-msp[0], 0-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.Border("Wall_edge_UL", "Border", [600-msp[0], 0-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.Border("Wall_+_W", "Border", [600-msp[0], 100-msp[1]])
+    Var.doors[Var.IDG-1] = basic_types.Door("Door_OU", "Door", [600-msp[0], 200-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.High_border("Wall_+_S", "High_border", [600-msp[0], 300-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.High_border("Wall_LR", "High_border", [100-msp[0], 300-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.High_border("Wall_LR", "High_border", [200-msp[0], 300-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.High_border("Wall_LR", "High_border", [300-msp[0], 300-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.High_border("Wall_LR", "High_border", [400-msp[0], 300-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.High_border("Wall_LR", "High_border", [500-msp[0], 300-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.Border("Wall_LR-UL", "Border", [700-msp[0], 100-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.Border("Wall_OR-LR", "Border", [800-msp[0], 200-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.Border("Wall_edge_OL", "Border", [1000-msp[0], 200-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.Border("Wall_OU", "Border", [1000-msp[0], 100-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.Border("Wall_edge_UR", "Border", [1000-msp[0], 0-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.Border("Wall_edge_UL", "Border", [1100-msp[0], 0-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.Border("Wall_OU", "Border", [1100-msp[0], 100-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.Border("Wall_OU", "Border", [1100-msp[0], 200-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.High_border("Wall_edge_OL", "High_border", [1100-msp[0], 300-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.High_border("Wall_LR", "High_border", [700-msp[0], 300-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.High_border("Wall_LR", "High_border", [800-msp[0], 300-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.High_border("Wall_LR", "High_border", [900-msp[0], 300-msp[1]])
+    Var.borders[Var.IDG-1] = basic_types.High_border("Wall_LR", "High_border", [1000-msp[0], 300-msp[1]])
+    
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow_edge_UR_NW", "Ground", [0-msp[0], 0-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow_LR_N", "Ground", [100-msp[0], 0-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow_LR_N", "Ground", [200-msp[0], 0-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow_LR_N", "Ground", [300-msp[0], 0-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow_LR_N", "Ground", [400-msp[0], 0-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow_LR_N", "Ground", [500-msp[0], 0-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow_edge_UL_NE", "Ground", [600-msp[0], 0-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow_OU_W", "Ground", [0-msp[0], 100-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow", "Ground", [100-msp[0], 100-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow", "Ground", [200-msp[0], 100-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow", "Ground", [300-msp[0], 100-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow", "Ground", [400-msp[0], 100-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow", "Ground", [500-msp[0], 100-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Stone_LR_N", "Ground", [600-msp[0], 100-msp[1]]) # eigentlich edge, aber für Schönheit von Wiese überlagert
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow_OU_E", "Ground", [600-msp[0], 100-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow_OU_W", "Ground", [0-msp[0], 200-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow", "Ground", [100-msp[0], 200-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow", "Ground", [200-msp[0], 200-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow", "Ground", [300-msp[0], 200-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow", "Ground", [400-msp[0], 200-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow", "Ground", [500-msp[0], 200-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow_OU_E", "Ground", [600-msp[0], 200-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow_edge_OR_SW", "Ground", [0-msp[0], 300-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow_LR_S", "Ground", [100-msp[0], 300-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow_LR_S", "Ground", [200-msp[0], 300-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow_LR_S", "Ground", [300-msp[0], 300-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow_LR_S", "Ground", [400-msp[0], 300-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow_LR_S", "Ground", [500-msp[0], 300-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Meadow_edge_OL_SE", "Ground", [600-msp[0], 300-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Stone_LR-UL_NE", "Ground", [700-msp[0], 100-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Stone_OU_W", "Ground", [600-msp[0], 200-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Stone", "Ground", [700-msp[0], 200-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Stone_OR-LR_NE", "Ground", [800-msp[0], 200-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Stone_edge_OR_SW", "Ground", [600-msp[0], 300-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Stone_LR_S", "Ground", [700-msp[0], 300-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Stone_LR_S", "Ground", [800-msp[0], 300-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Stone_LR_S", "Ground", [900-msp[0], 300-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Parquet_edge_UR_NW", "Ground", [1000-msp[0], 0-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Parquet_edge_UL_NE", "Ground", [1100-msp[0], 0-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Parquet_OU_W", "Ground", [1000-msp[0], 100-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Parquet_OU_E", "Ground", [1100-msp[0], 100-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Parquet_edge_OL_NW", "Ground", [1000-msp[0], 200-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Parquet_OU_E", "Ground", [1100-msp[0], 200-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Parquet_LR_S", "Ground", [1000-msp[0], 300-msp[1]])
+    Var.grounds[Var.IDG-1] = basic_types.Basic("Parquet_edge_OL_SE", "Ground", [1100-msp[0], 300-msp[1]])
